@@ -1,3 +1,7 @@
-import { pgEnum } from 'drizzle-orm/pg-core'
+export const UserRoleEnum = {
+    STUDENT: "STUDENT",
+    FACULTY: "FACULTY",
+    ADMIN: "ADMIN",
+}
 
-export const userRoleEnum = pgEnum('role', ['STUDENT', 'FACULTY', 'ADMIN'])
+export const AvailableUserRoles = Object.values(UserRoleEnum);
