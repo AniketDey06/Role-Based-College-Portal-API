@@ -9,6 +9,7 @@ export const userTable = pgTable('userTable', {
     name: varchar('name', { length: 55 }).notNull(),
     email: varchar({ length: 255 }).notNull().unique(),
     password: text().notNull(),
+    salt: text().notNull(),
     role: userRoleEnum('role').notNull().default(UserRoleEnum.STUDENT),
 
     createdAt: timestamp('created_at').defaultNow().notNull(),
