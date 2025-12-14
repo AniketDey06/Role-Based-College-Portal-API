@@ -8,6 +8,8 @@ export async function getUserByEmail(email) {
             id: userTable.id,
             name: userTable.name,
             role: userTable.role,
+            password: userTable.password,
+            salt: userTable.salt
         })
         .from(userTable)
         .where(eq(userTable.email, email))
