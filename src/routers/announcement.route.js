@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { checkRole, isLogedIn } from "../middlewares/auth.middleware.js";
-import { UserRoleEnum } from "../utils/constants.js";
-import { createAnnouncement } from "../controllers/announcement.controller.js";
+import { AvailableUserRoles, UserRoleEnum } from "../utils/constants.js";
+import { createAnnouncement, getAnnouncement } from "../controllers/announcement.controller.js";
 
 const announcementRouter = Router()
 
@@ -12,7 +12,10 @@ announcementRouter.route('/')
         checkRole([UserRoleEnum.ADMIN, UserRoleEnum.FACULTY]),
         createAnnouncement
     )
-    // .get()
+    .get(
+        checkRole(AvailableUserRoles),
+        getAnnouncement
+    )
 
 export {
     announcementRouter

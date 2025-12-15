@@ -15,6 +15,13 @@ export async function createNewAnnouncement({ title, description, userId }) {
     return result
 }
 
-export async function getUserById(userId) {
+export async function getAllAnnouncement() {
+    const result = await db
+    .select({
+        id: announcementTable.id,
+        title: announcementTable.title,
+        description: announcementTable.description,
+    }).from(announcementTable)
 
+    return result
 }
