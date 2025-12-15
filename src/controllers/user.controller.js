@@ -1,4 +1,4 @@
-import { createUser, getUserByEmail } from "../service/user.service.js";
+import { createUser, getUserByEmail, getUserById } from "../service/user.service.js";
 import { createHashedPassword } from "../utils/hash.js";
 import { createUserToken } from "../utils/token.js";
 import { loginPostBodySchema, signupPostRequstBodySchema } from "../validations/request.validation.js"
@@ -49,4 +49,17 @@ export const loginUser = async (req, res) => {
 
     res.cookie('token',token)
     return res.json({ token })
+}
+
+export const getUserProfile = async (req, res) => {
+    const user = req.user
+
+    if (!user) {
+        return res.status(404).json({ error: `No user found` })
+    }
+
+    const userData = await getUserById(user.id)
+    console.log(userData);
+    
+    return res.status(200).json({"user": { ...userData}})
 }

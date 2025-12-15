@@ -31,3 +31,16 @@ export async function createUser({ name, email, password, salt }) {
 
     return user
 }
+
+export async function getUserById(userId) {
+    const [userData] = await db
+        .select({
+            id: userTable.id,
+            name: userTable.name,
+            role: userTable.role,
+        })
+        .from(userTable)
+        .where(eq(userTable.id, userId))
+
+    return userData
+}
