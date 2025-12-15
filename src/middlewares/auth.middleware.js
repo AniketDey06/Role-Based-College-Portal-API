@@ -8,7 +8,6 @@ export async function isLogedIn(req, res, next) {
         return next()
     }
 
-
     const payload = await verifyUserToken(token)
 
     req.user = payload

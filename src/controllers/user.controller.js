@@ -59,7 +59,6 @@ export const getUserProfile = async (req, res) => {
     }
 
     const userData = await getUserById(user.id)
-    console.log(userData);
     
     return res.status(200).json({"user": { ...userData}})
 }
