@@ -15,3 +15,10 @@ export const createAnnouncementPostRequstBodySchema = z.object({
     title: z.string(),
     description: z.string(),
 })
+
+export const createResultPostRequstBodySchema = z.object({
+    adminId: z.uuid(),
+    studentId: z.uuid(),
+    fullMarks: z.string(),
+    obtainedMarks: z.string()
+}) 
