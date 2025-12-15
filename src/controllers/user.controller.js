@@ -1,7 +1,7 @@
 import { createUser, getUserByEmail, getUserById } from "../service/user.service.js";
 import { createHashedPassword } from "../utils/hash.js";
 import { createUserToken } from "../utils/token.js";
-import { loginPostBodySchema, signupPostRequstBodySchema } from "../validations/request.validation.js"
+import { loginPostRequstBodySchema, signupPostRequstBodySchema } from "../validations/request.validation.js"
 
 export const signupUser = async (req, res) => {
     const validationResult = await signupPostRequstBodySchema.safeParseAsync(req.body)
@@ -27,7 +27,7 @@ export const signupUser = async (req, res) => {
 }
 
 export const loginUser = async (req, res) => {
-    const validationResult = await loginPostBodySchema.safeParseAsync(req.body);
+    const validationResult = await loginPostRequstBodySchema.safeParseAsync(req.body);
     if (!validationResult.success) {
         return res.status(400).json({ error: validationResult.error.format() });
     }
