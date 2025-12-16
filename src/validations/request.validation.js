@@ -21,4 +21,10 @@ export const createResultPostRequstBodySchema = z.object({
     studentId: z.uuid(),
     fullMarks: z.string(),
     obtainedMarks: z.string()
-}) 
+})
+
+export const createCourcePostRequstBodySchema = z.object({
+    // adminId: z.uuid(),
+    facultyId: z.uuid(),
+    courseName: z.string(),
+})
