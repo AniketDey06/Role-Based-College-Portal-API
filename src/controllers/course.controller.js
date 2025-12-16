@@ -1,4 +1,4 @@
-import { createNewCourse } from "../service/course.service.js";
+import { createNewCourse, getAllCourses } from "../service/course.service.js";
 import { getUserById } from "../service/user.service.js";
 import { UserRoleEnum } from "../utils/constants.js";
 import { createCourcePostRequstBodySchema } from "../validations/request.validation.js"
@@ -20,4 +20,10 @@ export const createCourse = async (req, res) => {
     const courseData = await createNewCourse({ adminId, facultyId, courseName })
 
     return res.status(201).json({ data: { ...courseData } })
+}
+
+export const getCourses = async (req, res) => {
+    const coursesData = await getAllCourses()
+    
+    return res.status(201).json({ data: { ...coursesData } })
 }

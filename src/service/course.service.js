@@ -14,3 +14,11 @@ export async function createNewCourse({ adminId, facultyId, courseName }) {
 
     return result
 }
+
+export async function getAllCourses() {
+    const result = await db
+        .select()
+        .from(courseTable)
+
+    return result
+}
