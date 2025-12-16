@@ -1,3 +1,5 @@
 export { userTable } from "./user.models.js"
 export { announcementTable } from "./announcement.models.js"
 export { resultTable } from "./result.models.js"
+export { courseTable } from "./course.models.js"
+// export { materialTable } from "./materials.models.js"
