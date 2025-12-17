@@ -22,3 +22,12 @@ export async function getAllCourses() {
 
     return result
 }
+
+export async function getCourseById(coueseId) {
+    const [result] = await db
+        .select()
+        .from(courseTable)
+        .where(eq(courseTable.id, coueseId))
+
+    return result
+}

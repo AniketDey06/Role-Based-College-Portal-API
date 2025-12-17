@@ -28,3 +28,12 @@ export const createCourcePostRequstBodySchema = z.object({
     facultyId: z.uuid(),
     courseName: z.string(),
 })
+
+export const addMaterialToCourcePostRequstBodySchema = z.object({
+    // adminId: z.uuid(),
+    // courseId: z.uuid(),
+    // facultyId: z.uuid(),
+    title: z.string(),
+    description: z.string().optional(),
+    fileUrl: z.string().optional(),
+})
