@@ -1,6 +1,7 @@
 import { eq } from "drizzle-orm";
 import { db } from "../db/index.js"
 import { userTable } from "../models/user.models.js";
+import { email } from "zod";
 
 export async function getUserByEmail(email) {
     const [existingUser] = await db
@@ -53,6 +54,21 @@ export async function getAllUsers(params) {
             role: userTable.role,
         })
         .from(userTable)
+
+    return result
+}
+
+export async function changeUserRoleById(userId, role) {
+    const [result] = await db
+        .update(userTable)
+        .set({ role: role })
+        .where(eq(userTable.id, userId))
+        .returning({
+            id: userTable.id,
+            name: userTable.name,
+            email: userTable.email,
+            role: userTable.role,
+        })
 
     return result
 }

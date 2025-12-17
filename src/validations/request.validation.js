@@ -37,3 +37,7 @@ export const addMaterialToCourcePostRequstBodySchema = z.object({
     description: z.string().optional(),
     fileUrl: z.string().optional(),
 })
+
+export const chngeRolePostRequstSchema = z.object({
+    role: z.string().toUpperCase()
+})
