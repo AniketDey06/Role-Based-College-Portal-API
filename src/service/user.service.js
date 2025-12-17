@@ -33,7 +33,7 @@ export async function createUser({ name, email, password, salt }) {
 }
 
 export async function getUserById(userId) {
-    const [userData] = await db
+    const [result] = await db
         .select({
             id: userTable.id,
             name: userTable.name,
@@ -42,5 +42,17 @@ export async function getUserById(userId) {
         .from(userTable)
         .where(eq(userTable.id, userId))
 
-    return userData
+    return result
+}
+
+export async function getAllUsers(params) {
+    const result = await db
+        .select({
+            id: userTable.id,
+            name: userTable.name,
+            role: userTable.role,
+        })
+        .from(userTable)
+
+    return result
 }
