@@ -2,7 +2,7 @@ import { Router } from "express";
 
 import { checkRole, isLogedIn } from "../middlewares/auth.middleware.js";
 import { AvailableUserRoles, UserRoleEnum } from "../utils/constants.js";
-import { addMaterialToCourse, createCourse, getCourses } from "../controllers/course.controller.js";
+import { addMaterialToCourse, createCourse, getCourseMaterials, getCourses } from "../controllers/course.controller.js";
 
 const courseRouter = Router()
 
@@ -14,7 +14,7 @@ courseRouter.route('/')
 
 courseRouter.route('/:courseId/materials')
     .post(checkRole([UserRoleEnum.FACULTY]), addMaterialToCourse)
-
+    .get(checkRole([UserRoleEnum.FACULTY, UserRoleEnum.STUDENT]), getCourseMaterials)
 
 export {
     courseRouter
